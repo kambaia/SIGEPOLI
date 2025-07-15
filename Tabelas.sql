@@ -116,6 +116,9 @@ CREATE TABLE Avaliacoes (
     FOREIGN KEY (ID_Matricula) REFERENCES Matriculas(ID_Matricula) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+
+
 -- ========= TABELAS DA ÁREA OPERACIONAL para o projecto =========
 
 -- Tabela de Empresas Terceirizadas

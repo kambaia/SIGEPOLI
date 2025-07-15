@@ -18,6 +18,8 @@ FROM
 ORDER BY
     c.Nome, t.AnoLetivo, t.Semestre, t.DiaSemana, t.HoraInicio;
 
+---Caregar a caraga horaria dos cursos---
+select * from vw_grade_horaria_por_curso;
 -- 2. Carga horária por professor
 CREATE OR REPLACE VIEW vw_carga_horaria_por_professor AS
 SELECT
@@ -33,6 +35,8 @@ GROUP BY
 ORDER BY
     Carga_Horaria_Semanal DESC;
 
+---Teste para a view  Carga horia 
+    SELECT * FROM vw_carga_horaria_por_professor;
 -- 3. Resumo de custos de serviços por mês
 CREATE OR REPLACE VIEW vw_resumo_custos_servicos_mes AS
 SELECT
@@ -48,10 +52,8 @@ GROUP BY
     Mes, e.TipoServico
 ORDER BY
     Mes DESC, e.TipoServico;
+---Teste para 
+SELECT * FROM vw_resumo_custos_servicos_mes;
 
 
-
-    SELECT * FROM vw_carga_horaria_por_professor;
-
-SELECT * from turmas;
 

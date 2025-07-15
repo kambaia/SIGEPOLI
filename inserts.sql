@@ -32,6 +32,11 @@ UPDATE Departamentos
 SET ChefeDepartamento = (SELECT ID_Colaborador FROM ColaboradoresAdministrativos WHERE NomeCompleto = 'Marcelo Santos')
 WHERE nome = 'Coordenação Pedagógica';
 
+SELECT * from departamentos;
+
+SELECT d.Nome, cd.NomeCompleto, cd.Cargo From departamentos as d 
+INNER JOIN ColaboradoresAdministrativos as cd
+on d.ID_Chefe = cd.ID_Colaborador;
 
 --adicionar 10 professores--
 INSERT INTO Professores
@@ -51,16 +56,16 @@ INSERT INTO Professores
 
 INSERT INTO Alunos
 (NomeCompleto, BI, NIF, DataNascimento, Email) VALUES
-('Carlos Andrade', 'BI1001001', '800100200', '2003-02-15', 'carlos.andrade@aluno.com'),
-('Mariana Lopes', 'BI1001002', '800100201', '2002-08-22', 'mariana.lopes@aluno.com'),
-('Tiago Ramos', 'BI1001003', '800100202', '2001-11-10', 'tiago.ramos@aluno.com'),
-('Jéssica Silva', 'BI1001004', '800100203', '2004-06-05', 'jessica.silva@aluno.com'),
-('Bruno Castro', 'BI1001005', '800100204', '2003-01-18', 'bruno.castro@aluno.com'),
-('Larissa Gomes', 'BI1001006', '800100205', '2002-09-30', 'larissa.gomes@aluno.com'),
-('Ricardo Dias', 'BI1001007', '800100206', '2001-03-27', 'ricardo.dias@aluno.com'),
-('Tatiane Morais', 'BI1001008', '800100207', '2003-05-14', 'tatiane.morais@aluno.com'),
-('Fábio Teixeira', 'BI1001009', '800100208', '2002-10-03', 'fabio.teixeira@aluno.com'),
-('Beatriz Fernandes', 'BI1001010', '800100209', '2004-12-21', 'beatriz.fernandes@aluno.com');
+('Carlos Andrade', '000938388LA039', '000938388LA039', '2003-02-15', 'carlos.andrade@aluno.com'),
+('Mariana Lopes', '000138358LA039', '000138358LA039', '2002-08-22', 'mariana.lopes@aluno.com'),
+('Tiago Ramos', '00338388LA039', '00338388LA039', '2001-11-10', 'tiago.ramos@aluno.com'),
+('Jéssica Silva', '000428383LA039', '000428383LA039', '2004-06-05', 'jessica.silva@aluno.com'),
+('Bruno Castro', '001328383LA039', '001328383LA039', '2003-01-18', 'bruno.castro@aluno.com'),
+('Larissa Gomes', '000828383BE039', '000828383BE039', '2002-09-30', 'larissa.gomes@aluno.com'),
+('Ricardo Dias', '00021183LU039', '00021183LU039', '2001-03-27', 'ricardo.dias@aluno.com'),
+('Tatiane Morais', '001728383CA039', '001728383CA039', '2003-05-14', 'tatiane.morais@aluno.com'),
+('Fábio Teixeira', '001328311LA039', '001328311LA039', '2002-10-03', 'fabio.teixeira@aluno.com'),
+('Beatriz Fernandes', '001328377LA039', '001328377LA039', '2004-12-21', 'beatriz.fernandes@aluno.com');
 
 --adicionar 10 Cursos
 
@@ -127,12 +132,12 @@ INSERT INTO Turmas (AnoLetivo, Semestre, NumeroVagas, Sala, DiaSemana, HoraInici
 INSERT INTO Matriculas (DataMatricula, PropinaPaga, ID_Aluno, ID_Turma) VALUES
 ('2025-07-01', TRUE, 1, 1),
 ('2025-07-02', TRUE, 1, 2),
-('2025-07-03', True, 1, 3),  -- propina não paga
+('2025-07-03', False, 1, 3),  -- propina não paga
 ('2025-07-04', TRUE, 1, 4),
 ('2025-07-05', TRUE, 1, 5),
 
 ('2025-07-01', TRUE, 2, 1),
-('2025-07-02', True, 2, 2),  -- propina não paga
+('2025-07-02', FALSE, 2, 2),  -- propina não paga
 ('2025-07-03', TRUE, 2, 3),
 ('2025-07-04', TRUE, 2, 4),
 ('2025-07-05', TRUE, 2, 5);
@@ -192,11 +197,6 @@ INSERT INTO Auditoria (TabelaAfetada, ID_RegistroAfetado, Acao, DadosAntigos, Da
 ('Pagamentos', 3, 'INSERT', NULL, '{"ValorBase":3000.00,"ValorFinalPago":3000.00}', 'admin'),
 ('Contratos', 4, 'DELETE', '{"ID_Contrato":4,"ValorMensal":4500.00}', NULL, 'user2'),
 ('Auditoria', 5, 'INSERT', NULL, '{"Acao":"INSERT","Tabela":"SLAs"}', 'system');
-
-
-
-
-
 
 
 INSERT INTO Turmas (AnoLetivo, Semestre, NumeroVagas, Sala, DiaSemana, HoraInicio, HoraFim, ID_Disciplina, ID_Professor)
